@@ -41,9 +41,33 @@
       display: block;
       border-radius: 30px;
     }
+    .pinta {
+      width: 4px;
+      height: 4px;
+      z-index: 2;
+      background-color: #692816;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      top: 10px;
+      display: block;
+      border-radius: 30px;
+    }
+    .lock_pinta {
+      width: 308px;
+      padding: 20px;
+      z-index: 3;
+      left: 525px;
+      position: absolute;
+      background-color: white;
+      top: 430px;
+      cursor: pointer;
+      text-align: center;
+    }
     .hair_top {
       width: 38px;
-      height: 10px;
+      height: 6px;
       z-index: 2;
       background-color: #000;
       position: absolute;
@@ -55,29 +79,29 @@
       border-radius: 30px;
     }
     .hair_left {
-      width: 38px;
-      height: 10px;
+      width: 20px;
+      height: 6px;
       z-index: 2;
       background-color: #000;
       position: absolute;
-      left: -44px;
+      left: -40px;
       right: 0;
       margin: 0 auto;
-      top: 14px;
+      top: 7px;
       display: block;
       border-radius: 30px;
       transform: rotate(-72deg);
     }
     .hair_right {
-      width: 38px;
-      height: 10px;
+      width: 20px;
+      height: 6px;
       z-index: 2;
       background-color: #000;
       position: absolute;
-      left: 22px;
+      left: 29px;
       right: 0;
       margin: 0 auto;
-      top: 14px;
+      top: 8px;
       display: block;
       border-radius: 30px;
       transform: rotate(72deg);
@@ -234,6 +258,19 @@
       top: 0px;
       left: 0px;
     }
+    .close_eyes {
+      height: 0.5px;
+      transition: 0.2s;
+      top: -39px;
+      overflow: hidden;
+    }
+    .close_eyeballs {
+      height: 0.5px;
+      width: 100%;
+      transition: 0.2s;
+      top: 0px;
+      left: 0px;
+    }
     .lock_eyes {
       width: 308px;
       padding: 20px;
@@ -241,11 +278,14 @@
       left: 920px;
       position: absolute;
       background-color: white;
-      top: 129px;
+      top: 153px;
       cursor: pointer;
     }
   </style>
   <body>
+    <div class="lock_pinta">
+      TIRAR A PINTA
+    </div>
     <div class="lock_tongue">
       FICAR COM A LÍNGUA DE FORA
     </div>
@@ -259,6 +299,9 @@
           </div>
           <div class="hair_right">
           </div>
+        </div>
+        <div class="pinta">
+
         </div>
         <div class="btn eye_state">
           FECHAR OS OLHOS
@@ -297,5 +340,13 @@
     $('.lock_tongue').click(function() {
       $('.tongue').toggleClass('open_tongue');
     });
+    $('.lock_eyes').click(function() {
+      $('.eye').toggleClass('close_eyes');
+      $('.eyeball').toggleClass('close_eyeballs');
+    });
+    $('.lock_pinta').click(function() {
+      alert("ERRO, A PINTA NÃO PODE SER RETIRADA");
+    });
+
   </script>
 </html>
