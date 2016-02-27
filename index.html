@@ -281,6 +281,157 @@
       top: 153px;
       cursor: pointer;
     }
+    .neck {
+      width: 30px;
+      height: 30px;
+      background-color: #F7B6A4;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      top: 90px;
+      display: block;
+      border-radius: 10px;
+    }
+    .shirt_main {
+      width: 62px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      top: 110px;
+      display: block;
+      border-radius: 20px 20px 10px 10px;
+      z-index: -1;
+    }
+    .left_sleeve {
+      width: 28px;
+      height: 50px;
+      background-color: red;
+      position: absolute;
+      left: 0px;
+      right: 0;
+      transition: 0.2s;
+      margin: 0 auto;
+      top: -30px;
+      display: block;
+      border-radius: 20px 20px 10px 10px;
+      z-index: -1;
+      //transform: rotate(-65deg);
+    }
+    .left_arm_up {
+      width: 200px;
+      padding: 20px;
+      background-color: white;
+      text-align: center;
+      position: fixed;
+      left: -200px;
+      transition: 0.2s;
+      cursor: pointer;
+      transition: 0.2s;
+      top: 176px;
+      z-index: -3;
+    }
+    .left_arm_up:hover .left_arm {
+      transform: rotate(95deg);
+      top: -80px;
+      transition: 0.2s;
+    }
+    .left_arm {
+      width: 22px;
+      height: 50px;
+      background-color: #F7B6A4;
+      position: absolute;
+      left: 332px;
+      right: 0;
+      margin: 0 auto;
+      top: -58px;
+      display: block;
+      border-radius: 5px;
+      z-index: -3;
+      transform: rotate(65deg);
+      transition: 0.2s;
+    }
+    .right_sleeve {
+      width: 28px;
+      height: 50px;
+      background-color: red;
+      transition: 0.2s;
+      position: absolute;
+      left: 0px;
+      right: 0;
+      margin: 0 auto;
+      top: -30px;
+      display: block;
+      border-radius: 20px 20px 10px 10px;
+      z-index: -1;
+      //transform: rotate(65deg);
+    }
+    .right_arm_up {
+      width: 200px;
+      padding: 20px;
+      background-color: white;
+      text-align: center;
+      position: fixed;
+      left: -200px;
+      transition: 0.2s;
+      cursor: pointer;
+      top: 258px;
+      z-index: -3;
+      transition: 0.2s;
+    }
+    .right_arm_up:hover .right_arm {
+      top: -154px;
+      transform: rotate(-95deg);
+      transition: 0.2s;
+    }
+    .right_arm {
+      width: 22px;
+      height: 50px;
+      background-color: #F7B6A4;
+      position: absolute;
+      left: 448px;
+      right: 0;
+      transition: 0.2s;
+      margin: 0 auto;
+      top: -134px;
+      display: block;
+      border-radius: 5px;
+      z-index: -3;
+      transform: rotate(-65deg);
+    }
+    .lock_right_arm_up {
+      width: 308px;
+      padding: 20px;
+      z-index: 3;
+      left: 920px;
+      position: absolute;
+      background-color: white;
+      top: 217px;
+      cursor: pointer;
+    }
+    .lock_left_arm_up {
+      width: 308px;
+      padding: 20px;
+      z-index: 3;
+      left: 920px;
+      position: absolute;
+      background-color: white;
+      top: 300px;
+      cursor: pointer;
+    }
+    .arm_left_is_up {
+      transform: rotate(95deg);
+      top: -80px;
+      transition: 0.2s;
+    }
+    .arm_right_is_up {
+      top: -154px;
+      transform: rotate(-95deg);
+      transition: 0.2s;
+    }
   </style>
   <body>
     <div class="lock_pinta">
@@ -291,6 +442,12 @@
     </div>
     <div class="lock_eyes">
       FICAR COM OS OLHOS FECHADOS
+    </div>
+    <div class="lock_right_arm_up">
+      FICAR COM OS BRAÇO DIREITO LEVANTADO
+    </div>
+    <div class="lock_left_arm_up">
+      FICAR COM OS BRAÇO DIREITO LEVANTADO
     </div>
     <div class="container">
       <div class="head">
@@ -333,6 +490,22 @@
           </div>
         </div>
       </div>
+      <div class="neck"></div>
+      <div class="shirt">
+        <div class="shirt_main"></div>
+      </div>
+      <div class="left_arm_up">
+        LEVANTAR BRAÇO ESQUERDO
+        <div class="left_arm">
+          <div class="left_sleeve"></div>
+        </div>
+      </div>
+      <div class="right_arm_up">
+        LEVANTAR BRAÇO DIREITO
+        <div class="right_arm">
+          <div class="right_sleeve"></div>
+        </div>
+      </div>
     </div>
 
   </body>
@@ -346,6 +519,12 @@
     });
     $('.lock_pinta').click(function() {
       alert("ERRO, A PINTA NÃO PODE SER RETIRADA");
+    });
+    $('.lock_right_arm_up').click(function() {
+      $('.right_arm').toggleClass('arm_right_is_up');
+    });
+    $('.lock_left_arm_up').click(function() {
+      $('.left_arm').toggleClass('arm_left_is_up');
     });
 
   </script>
