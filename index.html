@@ -1,0 +1,301 @@
+<!DOCTYPE html IDEIA GERAR POSICAO ALEATORIA CONTAR CLIQUES>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="jquery-2.2.1.js"></script>
+
+
+  </head>
+  <style media="screen">
+    body, html {
+      height: 100%;
+      width: 100%;
+      background-color: black;
+      margin: 0;
+      padding: 0;
+      position: relative;
+    }
+    .container {
+      width: 400px;
+      height: 400px;
+      margin: 0 auto;
+      background-color: #CCCCCC;
+      position: relative;
+      top: 10%;
+      transform: scale(1.2);
+
+    }
+    div {
+      box-sizing: border-box;
+    }
+    .head {
+      width: 50px;
+      height: 58px;
+      background-color: #F7B6A4;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      top: 50px;
+      display: block;
+      border-radius: 30px;
+    }
+    .hair_top {
+      width: 38px;
+      height: 10px;
+      z-index: 2;
+      background-color: #000;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      top: 0px;
+      display: block;
+      border-radius: 30px;
+    }
+    .hair_left {
+      width: 38px;
+      height: 10px;
+      z-index: 2;
+      background-color: #000;
+      position: absolute;
+      left: -44px;
+      right: 0;
+      margin: 0 auto;
+      top: 14px;
+      display: block;
+      border-radius: 30px;
+      transform: rotate(-72deg);
+    }
+    .hair_right {
+      width: 38px;
+      height: 10px;
+      z-index: 2;
+      background-color: #000;
+      position: absolute;
+      left: 22px;
+      right: 0;
+      margin: 0 auto;
+      top: 14px;
+      display: block;
+      border-radius: 30px;
+      transform: rotate(72deg);
+    }
+    .eye {
+      width: 10px;
+      height: 4px;
+      z-index: 2;
+      background-color: #FFF;
+      position: absolute;
+      left: 404px;
+      right: 0;
+      margin: 0 auto;
+      top: -42px;
+      display: block;
+      border-radius: 125px/53px;
+      transition: 0.2s;
+    }
+    .eye_left {
+      left: 386px;
+    }
+    .eyeball {
+      width: 4px;
+      height: 4px;
+      background-color: #000;
+      position: absolute;
+      left: 3px;
+      right: 0;
+      top: 0px;
+      display: block;
+      border-radius: 30px;
+      transition: 0.2s;
+    }
+    .nose {
+      width: 0.5px;
+      height: 13px;
+      z-index: 2;
+      background-color: #9E3518;
+      position: absolute;
+      left: -2.8px;
+      right: 0;
+      margin: 0 auto;
+      top: 25px;
+      display: block;
+      border-radius: 30px;
+      transform: rotate(8deg);
+    }
+    .nose_bottom {
+      width: 6px;
+      height: 0.5px;
+      z-index: 2;
+      background-color: #9E3518;
+      position: absolute;
+      left: 0px;
+      right: 0;
+      margin: 0 auto;
+      top: 37px;
+      display: block;
+      border-radius: 30px;
+      transform: rotate(-8deg);
+    }
+    .mouth {
+      width: 20px;
+      height: 8px;
+      z-index: 2;
+      background-color: #731B03;
+      position: absolute;
+      left: 0px;
+      right: 0;
+      margin: 0 auto;
+      top: 43px;
+      display: block;
+      border-radius: 30px;
+      border-radius: 0px 0px 90px 90px;
+    }
+    .tongue {
+      width: 10px;
+      height: 1px;
+      z-index: 3;
+      background-color: #D42D2D;
+      position: absolute;
+      left: 395px;
+      right: 0;
+      margin: 0 auto;
+      top: 43px;
+      display: block;
+      border-radius: 30px;
+      border-radius: 0px 0px 90px 90px;
+      transition: 0.2s;
+    }
+    .tongue_line {
+      width: 0.5px;
+      height: 0px;
+      z-index: 3;
+      background-color: #A70101;
+      position: absolute;
+      left: 399.5px;
+      right: 0;
+      margin: 0 auto;
+      top: 48px;
+      display: block;
+      transition: 0.2s;
+    }
+    .tongue_state {
+      width: 200px;
+      padding: 20px;
+      z-index: 3;
+      background-color: white;
+      text-align: center;
+      position: fixed;
+      left: -200px;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+    .tongue_state:hover .tongue, .open_tongue {
+      height: 20px;
+      transition: 0.2s;
+    }
+    .tongue_state:hover .tongue_line, .open_tongue + .tongue_line {
+      height: 6px;
+      transition: 0.3s;
+    }
+    .lock_tongue {
+      width: 308px;
+      padding: 20px;
+      z-index: 3;
+      left: 920px;
+      position: absolute;
+      background-color: white;
+      top: 89px;
+      cursor: pointer;
+    }
+    .eye_state {
+      width: 200px;
+      padding: 20px;
+      z-index: 3;
+      background-color: white;
+      text-align: center;
+      position: fixed;
+      left: -200px;
+      transition: 0.2s;
+      top: 113px;
+    }
+    .eye_state:hover .eye {
+      height: 0.5px;
+      transition: 0.2s;
+      top: -39px;
+      overflow: hidden;
+    }
+    .eye_state:hover .eyeball {
+      height: 0.5px;
+      width: 100%;
+      transition: 0.2s;
+      top: 0px;
+      left: 0px;
+    }
+    .lock_eyes {
+      width: 308px;
+      padding: 20px;
+      z-index: 3;
+      left: 920px;
+      position: absolute;
+      background-color: white;
+      top: 129px;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <div class="lock_tongue">
+      FICAR COM A LÍNGUA DE FORA
+    </div>
+    <div class="lock_eyes">
+      FICAR COM OS OLHOS FECHADOS
+    </div>
+    <div class="container">
+      <div class="head">
+        <div class="hair_top">
+          <div class="hair_left">
+          </div>
+          <div class="hair_right">
+          </div>
+        </div>
+        <div class="btn eye_state">
+          FECHAR OS OLHOS
+          <div class="eye eye_right" id="eyeright">
+            <div class="eyeball" id="pupilright">
+            </div>
+          </div>
+          <div class="eye eye_left" id="eyeleft">
+            <div class="eyeball" id="pupilleft">
+            </div>
+          </div>
+        </div>
+        <div class="nose">
+
+        </div>
+        <div class="nose_bottom">
+
+        </div>
+        <div class="mouth">
+
+        </div>
+        <div class="btn tongue_state">
+          MOSTRAR A LÍNGUA
+          <div class="tongue">
+
+          </div>
+          <div class="tongue_line">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+  <script>
+    $('.lock_tongue').click(function() {
+      $('.tongue').toggleClass('open_tongue');
+    });
+  </script>
+</html>
